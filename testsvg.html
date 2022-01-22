@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Testing SVG</title>
+    <link href="mysvg.css" rel="stylesheet" />
+</head>
+
+<script src="mysvg.js"></script>
+
+<body>
+
+<div class="map-container">
+    <div class="map-box">
+        <svg xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            xmlns:ev="http://www.w3.org/2001/sml-events"
+            viewBox="0 0 1200 900"
+            id="svgMap"
+            >
+            <defs>
+                <linearGradient id="redGradient" gradientTransform="rotate(90)">
+                    <stop offset="0%" stop-color="#100000" />
+                    <stop offset="100%" stop-color="#ee1010" />
+                </linearGradient>
+                <linearGradient id="greenGradient" gradientTransform="rotate(90)">
+                    <stop offset="0%" stop-color="#001000" />
+                    <stop offset="100%" stop-color="#10ee10" />
+                </linearGradient>
+                <linearGradient id="blueGradient" gradientTransform="rotate(90)">
+                    <stop offset="0%" stop-color="#000010" />
+                    <stop offset="100%" stop-color="#1010ee" />
+                </linearGradient>
+                <linearGradient id="purpleGradient" gradientTransform="rotate(90)">
+                    <stop offset="0%" stop-color="#100010" />
+                    <stop offset="100%" stop-color="#ee10ee" />
+                </linearGradient>
+            </defs>
+            <rect x="0" y="0" width="600" height="450" fill="url('#redGradient')"></rect>
+            <rect x="601" y="0" width="600" height="450" fill="url('#greenGradient')"></rect>
+            <rect x="0" y="451" width="600" height="450" fill="url('#blueGradient')"></rect>
+            <rect x="601" y="451" width="600" height="450" fill="url('#purpleGradient')"></rect>
+            
+            
+            <rect x="0" y="0" width="4" height="900" fill="#eeee10"></rect>
+            <rect x="1196" y="0" width="4" height="900" fill="#eeee10"></rect>
+            <rect x="0" y="0" width="1200" height="4" fill="#eeee10"></rect>
+            <rect x="0" y="896" width="1200" height="4" fill="#eeee10"></rect>
+        </svg>
+    </div>
+    <div class="map-button-column"></div>
+</div>
+
+</body>
+
+</html>

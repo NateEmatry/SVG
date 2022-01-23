@@ -5,17 +5,20 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Testing SVG</title>
-    <link href="mysvg.css" rel="stylesheet" />
+    <title>SVG Map Maker</title>
+    <link href="mapgrid.css" rel="stylesheet" />
 </head>
 
 <script src="mysvg.js"></script>
 
 <body>
-
-<div class="map-container">
-    <div id="mapDiv" class="map-box">
-        <svg xmlns="http://www.w3.org/2000/svg"
+    <div class="map-grid-container">
+        <div></div>
+        <div id="xcoords" class="map-grid-x-coords"></div>
+        <div></div>
+        <div id="ycoords" class="map-grid-y-coords"></div>
+        <div class="map-grid-box">
+            <svg xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink"
             xmlns:ev="http://www.w3.org/2001/sml-events"
             viewBox="0 0 1200 900"
@@ -40,21 +43,26 @@
                 </linearGradient>
             </defs>
 
+            
             <rect x="0" y="0" width="600" height="450" fill="url('#redGradient')"></rect>
             <rect x="601" y="0" width="600" height="450" fill="url('#greenGradient')"></rect>
             <rect x="0" y="451" width="600" height="450" fill="url('#blueGradient')"></rect>
             <rect x="601" y="451" width="600" height="450" fill="url('#purpleGradient')"></rect>
             
-            
             <rect x="0" y="0" width="4" height="900" fill="#eeee10"></rect>
             <rect x="1196" y="0" width="4" height="900" fill="#eeee10"></rect>
             <rect x="0" y="0" width="1200" height="4" fill="#eeee10"></rect>
             <rect x="0" y="896" width="1200" height="4" fill="#eeee10"></rect>
+        
+            <text x="50" y="50" id="mousePosText" class="mouse-pos-text">Bai~</text>
+            
         </svg>
+        </div>
+        <div class="map-grid-button-column">
+            <button id="gridToggle" class="map-button">Toggle Grid</button>
+            <button id="mousePosToggle" class="map-button">Toggle Mouse Position</button>
+        </div>
     </div>
-    <div class="map-button-column">
-    </div>
-</div>
 
 </body>
 

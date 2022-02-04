@@ -22,6 +22,7 @@ window.onload = () => {
     document.getElementById("svgMap").onmousemove = mousePosition;
     document.getElementById("gridToggle").onclick = toggleGrid;
     document.getElementById("mousePosToggle").onclick = toggleMousePosition;
+    document.getElementById("generateStars").onclick = generateStarfield;
     setViewbox();
 }
 
@@ -33,6 +34,7 @@ function drawGridLines() {
 
     removeGridLines();
 
+    // vertical lines
     for (var i = viewbox_X; i < viewbox_X + viewbox_width; i += viewbox_width/12)
     {
         var el = document.createElementNS(SVG_NAMESPACE, "rect");
@@ -53,6 +55,7 @@ function drawGridLines() {
         xcoords.appendChild(coordEl);
     }
     
+    // horizontal lines
     for (var j = viewbox_Y; j < viewbox_Y + viewbox_height; j += viewbox_height/9)
     {
         var el = document.createElementNS(SVG_NAMESPACE, "rect");
@@ -75,6 +78,64 @@ function drawGridLines() {
 
 }
 
+function generateStarfield() {
+
+    const map = document.getElementById("svgMap");
+    let bg = document.getElementById("spaceBG");
+    if (bg != null)
+        map.removeChild(bg);
+
+    var existingStars = document.getElementsByClassName("star-point");
+    while (existingStars.length > 0)
+    {
+        map.removeChild(existingStars[0]);
+        // existingStars.shift();
+    }
+
+    const starWhite = "#eeeeee";
+    const starRed = "#eeaaaa";
+    const starOrange = "#eeaa88";
+    const starYellow = "#eeeeaa";
+    const starGreen = "#aaeeaa";
+    const starBlue = "#aaaaee";
+    const starPurple = "#eeaaee";
+
+    const starColors = [starWhite, starRed, starOrange, starYellow, starGreen, starBlue, starPurple];
+
+    const numStars = 500;
+
+    let backgroundSpace = document.createElementNS(SVG_NAMESPACE, "rect");
+    backgroundSpace.setAttribute("x", 0);
+    backgroundSpace.setAttribute("y", 0);
+    backgroundSpace.setAttribute("width", MAP_WIDTH);
+    backgroundSpace.setAttribute("height", MAP_HEIGHT);
+    backgroundSpace.setAttribute("fill", "#202020");
+    backgroundSpace.setAttribute("id", "spaceBG");
+    map.appendChild(backgroundSpace);
+    
+
+    for (let i = 0; i < numStars; ++i)
+    {
+        let el = document.createElementNS(SVG_NAMESPACE, "circle");
+        let x = Math.floor(Math.random() * MAP_WIDTH);
+        let y = Math.floor(Math.random() * MAP_HEIGHT);
+
+        let radius = Math.ceil(Math.random() * 3);
+        let starColor = starColors[Math.floor(Math.random() * starColors.length)];
+
+        el.setAttribute("cx", x);
+        el.setAttribute("cy", y);
+        el.setAttribute("r", radius);
+        el.setAttribute("fill", starColor);
+        el.setAttribute("class", "star-point");
+
+        map.appendChild(el);
+    }
+
+    if (gridLinesOn)
+        drawGridLines();
+
+}
 
 function keyDown(event) {
 
